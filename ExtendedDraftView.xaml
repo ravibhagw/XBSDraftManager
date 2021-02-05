@@ -1,0 +1,64 @@
+﻿<Window x:Class="DraftUtility.ExtendedDraftView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DraftUtility"
+        mc:Ignorable="d"
+        Title="Window1" Height="1080" Width="1920">
+    <Grid Margin="0,0,2,-21">
+        <DataGrid x:Name="grd_players" MouseDoubleClick="DataGrid_DoubleClick" ClipboardCopyMode="IncludeHeader" BeginningEdit="Grid_BeginningEdit" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="824" Margin="10,194,0,0" VerticalAlignment="Top" Width="1890">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Gamertag"  Binding="{Binding Gamertag}"/>
+                <DataGridTextColumn Header="Position"  Binding="{Binding Position}"/>
+                <DataGridTextColumn Header="Avg. Player Win%"  Binding="{Binding WinsRelativeToTeam, StringFormat=\{0:P2\}}" Foreground="Fuchsia"/>
+                <DataGridTextColumn Header="Avg. Team Win%" Foreground="Fuchsia" Binding="{Binding AverageTeamWinPercentage, StringFormat=\{0:P2\}}"/>
+                <DataGridTextColumn Header="Avg. Win Diff" Foreground="Fuchsia" Binding="{Binding AverageWinDifferential, StringFormat=\{0:P2\}}"/>
+                <DataGridTextColumn Header="Avg. GP" Foreground="DarkGreen" Binding="{Binding AverageGamesPlayed, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Cum. GP" Foreground="DarkGreen" Binding="{Binding CumulativeAverageGamesPlayed, StringFormat=\{0:0.00\}}"/>
+                
+                <DataGridTextColumn Header="Avg. G" Foreground="DarkGreen" Binding="{Binding GoalsPerGame, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Avg. A" Foreground="DarkGreen" Binding="{Binding AssistsPerGame, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Avg P" Foreground="DarkGreen" Binding="{Binding PointsPerGame, StringFormat=\{0:0.00\}}"/>
+
+                <DataGridTextColumn Header="Med. G%" Foreground="Fuchsia" Binding="{Binding MedianGoalScoringPercentage, StringFormat=\{0:P2\}}"/>
+                <DataGridTextColumn Header="Med. A%" Foreground="Fuchsia" Binding="{Binding MedianAssistPercentage, StringFormat=\{0:P2\}}"/>
+                <DataGridTextColumn Header="Med. P%" Foreground="Fuchsia" Binding="{Binding MedianOffensiveContribution, StringFormat=\{0:P2\}}"/>
+                
+                <DataGridTextColumn Header="Avg. Shots" Foreground="DarkGreen" Binding="{Binding ShotsPerGame, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Med. Sh%" Foreground="Fuchsia" Binding="{Binding MedianShootingPercentage, StringFormat=\{0:P2\}}"/>
+
+                <DataGridTextColumn Header="Avg. Hits" Foreground="DarkGreen" Binding="{Binding HitsPerGame, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Med. H%" Foreground="Fuchsia" Binding="{Binding MedianHitShare, StringFormat=\{0:P2\}}"/>
+                
+                <DataGridTextColumn Header="Avg +\-" Foreground="DarkGreen" Binding="{Binding AveragePlusMinus, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Avg PIM" Foreground="DarkGreen" Binding="{Binding PIMPerGame, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Med. PIM%" Foreground="Fuchsia" Binding="{Binding MedianPIMShare, StringFormat=\{0:P2\}}"/>
+                
+                <DataGridTextColumn Header="Avg. DRating" Foreground="DarkGreen" Binding="{Binding AverageDRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="D.Rating/Point" Foreground="DarkGreen" Binding="{Binding DRatingPerPoint, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="D.Rating+/-" Foreground="DarkGreen" Binding="{Binding DRatingDifferential, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="C. OVR Rating" Foreground="DarkGreen" Binding="{Binding CenterOverallRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="C. SNP Rating" Foreground="DarkGreen" Binding="{Binding CenterSniperRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="C. PLY Rating" Foreground="DarkGreen" Binding="{Binding CenterPlaymakerRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="C. SNP Bias" Foreground="DarkGreen" Binding="{Binding CenterSniperBias, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="W. OVR Rating" Foreground="DarkGreen" Binding="{Binding WingerOverallRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="W. SNP Rating" Foreground="DarkGreen" Binding="{Binding WingerSniperRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="W. PLY Rating" Foreground="DarkGreen" Binding="{Binding WingerPlaymakerRating, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="W. SNP Bias" Foreground="DarkGreen" Binding="{Binding WingerSniperBias, StringFormat=\{0:0.00\}}"/>
+                <DataGridTextColumn Header="Avg. FO%" Foreground="DarkGreen" Binding="{Binding AverageFaceoffPercentage, StringFormat=\{0:0.00\}}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel x:Name="stackpanel" HorizontalAlignment="Left" Height="179" Margin="10,10,0,0" VerticalAlignment="Top" Width="1512">
+            <Label Content="Get Minimum Games Played Threshold:"/>
+            <TextBox x:Name="txt_gpThreshold" Height="24" TextWrapping="Wrap" Text="0" TextChanged="UpdateFilter"/>
+            <CheckBox x:Name="chk_hideC" Content="Hide C" Checked="UpdateFilter" Unchecked="UpdateFilter"/>
+            <CheckBox x:Name="chk_hideW" Content="Hide W" Checked="UpdateFilter" Unchecked="UpdateFilter"/>
+            <CheckBox x:Name="chk_hideD" Content="Hide D" Checked="UpdateFilter" Unchecked="UpdateFilter"/>
+            <CheckBox x:Name="chk_addowners" Content="Include Owners?" Checked="UpdateFilter" Unchecked="UpdateFilter"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

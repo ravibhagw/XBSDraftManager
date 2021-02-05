@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XBSDraftManager", "XBSDraftManager.csproj", "{74B07296-F24F-49CA-A89A-26788212CE55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74B07296-F24F-49CA-A89A-26788212CE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B07296-F24F-49CA-A89A-26788212CE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B07296-F24F-49CA-A89A-26788212CE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B07296-F24F-49CA-A89A-26788212CE55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90EE7BC0-CF8A-4340-9055-7E3256DAF91F}
+	EndGlobalSection
+EndGlobal

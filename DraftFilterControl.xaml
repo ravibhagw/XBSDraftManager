@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="DraftUtility.DraftFilterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DraftUtility"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="0,10,272,349">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <CheckBox x:Name="chk_wing" Content="Show Wingers" HorizontalAlignment="Left" Margin="7,10,0,0" VerticalAlignment="Top" Width="102" Unchecked="FilterChanged" Checked="FilterChanged" Height="15"/>
+        <CheckBox x:Name="chk_center" Content="Show Centers" HorizontalAlignment="Left" Margin="117,10,0,0" VerticalAlignment="Top" Width="102" Unchecked="FilterChanged" Checked="FilterChanged" Height="15"/>
+        <CheckBox x:Name="chk_defense" Content="Show Defense" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" Width="102" Unchecked="FilterChanged" Checked="FilterChanged" Height="15"/>
+        <CheckBox x:Name="chk_goalie" Content="Show Goalies" HorizontalAlignment="Left" Margin="331,10,0,0" VerticalAlignment="Top" Width="102" Unchecked="FilterChanged" Checked="FilterChanged" Height="15"/>
+        <CheckBox x:Name="chk_scouted" Content="Hide Unscouted Players" HorizontalAlignment="Left" Margin="7,32,0,0" VerticalAlignment="Top" Width="153" Unchecked="FilterChanged" Checked="FilterChanged" Height="15"/>
+        <CheckBox x:Name="chk_confident" Content="Hide Low Confidence" HorizontalAlignment="Left" Margin="160,32,0,0" VerticalAlignment="Top" Width="153" Unchecked="FilterChanged" Checked="FilterChanged" Height="15"/>
+        <Label Content="Search:" HorizontalAlignment="Left" Margin="8,57,0,0" VerticalAlignment="Top" Height="24" Width="48"/>
+        <TextBox x:Name="txt_searchname" HorizontalAlignment="Left" Height="23" Margin="53,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="233" TextChanged="FilterChanged"/>
+        <Button x:Name="btn_reset" Content="Reset Filters" HorizontalAlignment="Left" Margin="293,62,0,0" VerticalAlignment="Top" Width="75" Height="19" Click="ForceFilterReset"/>
+        <Label x:Name="lbl_summary" Content="" HorizontalAlignment="Left" Margin="10,90,0,-131" VerticalAlignment="Top" Height="132" Width="518" Grid.RowSpan="2" FontFamily="Courier New"/>
+
+        <ComboBox x:Name="ddl_threshhold" HorizontalAlignment="Left" Margin="363,0,0,38" VerticalAlignment="Bottom" Width="37" Height="15" FontSize="8" SelectionChanged="FilterChanged">
+            <ComboBoxItem IsSelected="True">1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Threshold:" HorizontalAlignment="Left" Margin="298,27,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</UserControl>
